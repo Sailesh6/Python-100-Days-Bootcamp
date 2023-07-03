@@ -1,0 +1,6 @@
+print("Hey let's get your band a name!\n \nAnswer the below questions\n ")
+city_name = input("which city did you grew up in ?\n")
+print(" ")
+sweet_name = input("Your favorite sweet name ?\n")
+print(" ")
+print("Final band name: " + city_name + " " + sweet_name)
