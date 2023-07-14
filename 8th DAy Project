@@ -1,0 +1,50 @@
+from art import logo
+print(logo)
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ,'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+def caesar(direction1 , text1 , shift1):
+  if direction == "encode":
+    encrypted_msg = ""
+    for letter in text:
+      if letter in alphabet:
+        position = alphabet.index(letter)
+        new_alphabet = alphabet[position + shift]
+        encrypted_msg += new_alphabet
+      else:
+        encrypted_msg += letter
+        
+    print(f"The encoded text is {encrypted_msg}")
+
+  if direction == "decode":
+    decrypted_msg = ""
+    for letter1 in text:
+      if letter1 in alphabet:
+        position1 = alphabet.index(letter1)
+        new_alphabet1 = alphabet[26 + position1 - shift]
+        decrypted_msg += new_alphabet1
+      else:
+        decrypted_msg += letter1
+      
+    print(f"The decoded text is {decrypted_msg}")
+
+
+ques = False
+
+while ques == False:
+  direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+  text = input("Type your message:\n").lower()
+  shiftx = int(input("Type the shift number:\n"))
+  
+  if shiftx < 26:
+    shift = shiftx
+  if shiftx >=26:
+    shift = shiftx % 26
+
+  caesar(direction , text , shift)
+  ques = input("Do You want to restart the program?\n").lower()
+  if ques == "no":
+    ques = True
+    print("GoodBye!!")
+  if ques == "yes":
+      ques = False
+    
