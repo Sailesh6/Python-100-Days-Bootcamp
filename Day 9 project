@@ -1,0 +1,32 @@
+from replit import clear
+from art import logo
+print(logo)
+print("Welcome to the secret aution program.")
+
+
+key = input("What is your name?\n")
+value = input("what's your bid?\n$")
+
+listx = []
+listy = []
+
+def function(key , value):
+  list=[]
+  list.append({"key":key , "value":value})
+  question = input("Are there any other bidders ? Type 'yes' or 'no'\n").lower()
+  while question == "yes":
+    clear()
+    key = input("What is your name?\n")
+    value = input("what's your bid?\n$")
+    list.append({"key":key , "value": value})
+    question = input("Are there any other bidders ? Type 'yes' or 'no'\n").lower()
+    listx.append(value)
+    listy.append(key)
+  if question == "no":
+    clear()
+    value_final = max(listx)
+    index = listx.index(value_final)
+    key_final = listy[index]
+    print (f"The winner is {key_final} with a bid of ${value_final}")
+
+function(key,value)
