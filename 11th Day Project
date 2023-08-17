@@ -1,0 +1,76 @@
+import random
+
+
+def blackjack():
+  deck = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+  pc_choice = [random.choice(deck) , random.choice(deck)]
+  user_choice = [random.choice(deck) , random.choice(deck)]
+  if 10 and 11 in pc_choice:
+    return 0
+  if 10 and 11 in user_choice:
+    return 1
+  
+  
+  sum1 = 0
+  for cards1 in pc_choice:
+    sum1 += cards1
+      
+    
+  while sum1 < 17:
+    pc_choice.append(random.choice(deck))
+  print(f"Your Cards: [{user_choice[0]} , {user_choice[1]}]")
+  print(f"Computer's First Card: {pc_choice[0]}")
+  
+  def another_cardw():
+    another_card = input('Type "y" to get another card, type "n" to pass\n').lower()
+    sum = 0
+    for cards in user_choice:
+      sum += cards
+    if another_card == "y" and sum<21:
+      user_choice.append(random.choice(deck))
+      print(f"Your final hand: {user_choice}") 
+      sum = 0
+      for cards in user_choice:
+        sum += cards
+      if sum<21:
+        another_cardw()
+      if sum>21:
+        print(f"computer's final hand: {pc_choice}")
+    if another_card == "n":
+      print(f"Your final hand: {user_choice}")
+      print(f"computers final Hand: {pc_choice}")
+  
+  another_cardw()
+  
+  
+  sum = 0
+  for cards in user_choice:
+    sum += cards
+  
+  if sum > 21:
+    print("You Lost")
+  if sum > sum1 and sum < 21:
+    print("You Win")
+  if sum1 > sum and sum1 < 21:
+    print("You lost")
+  if sum == sum1:
+    print("draw")
+
+  ques = input("Do You want to play the game again?\n").lower()
+  if ques == "yes":
+    blackjack()
+  if ques == "no":
+    return 9
+
+
+blackjack()
+
+black = blackjack() 
+
+if black == 0:
+  print("You lost hahaha pc has got a perfect hand!!")
+if black == 1:
+  print("You won with a perfect hand!!")
+if black == 9:
+  print("okay have a good day")
+  
